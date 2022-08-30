@@ -27,7 +27,7 @@ for fila in res:
     if (numero_cheque, numero_cuenta, dni) in vistos:
         res.append("Los datos estan repetidos")
     else:
-        vistos.add(numero_cheque, numero_cuenta, dni)
+        vistos.add((numero_cheque, numero_cuenta, dni))
 
 if salida == "PANTALLA":
     for fila in res:
