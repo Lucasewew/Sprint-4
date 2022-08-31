@@ -10,7 +10,7 @@ tipo_de_cheque = argumentos[3]
 res = []
 
 with open(nombre_del_archivo, "r") as archivo_csv:
-    csv_reader = csv.reader(archivo_csv, delimiter=",")
+    csv_reader = csv.reader(archivo_csv, delimiter="," )
     for fila in csv_reader:
         dni = fila[8]
         tipo = fila[9]
@@ -33,7 +33,8 @@ if salida == "PANTALLA":
     for fila in res:
         print(fila)
 elif salida == "CSV":
+    filtro = ["NumeroCuentaOrigen","Valor","FechaOrigen","FechaPago"]
     datosFiltrados = [[fila[3],fila[5],fila[6],fila[7]] for fila in res]
-    with open("salida.csv") as archivo_salida:
+    with open("salida.csv", "w") as archivo_salida:
         writer = csv.writer(archivo_salida)
-        writer.writerows(datosFiltrados)
+        writer.writerows([filtro, datosFiltrados])
